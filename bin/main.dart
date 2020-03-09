@@ -77,6 +77,7 @@ void main() {
   print(reconstructString(['quick', 'brown', 'the', 'fox',], "thequickbrownfox"));
   print(reconstructString(['bed', 'bath', 'bedbath', 'and', 'beyond',], "bedbathandbeyond"));
   print(reconstructString(['bedbat', 'bed', 'bath', 'bedbath', 'and', 'beyond',], "bedbathandbeyond"));
+  print(reconstructString(['bedbat', 'bed', 'bath', 'bedbath', 'and', 'beyond',], "bedbathandbeyond"));
   print(reconstructString(["that", 'is', 'quick', 'brown', 'the', 'fox',], "thatisthequickbrownfox"));
 }
 
@@ -106,7 +107,7 @@ int longestStreak(List<Map<String, String>> dates){
   return listOfStreaks.isNotEmpty ? (listOfStreaks.reduce(max)) : 0;
 }
 
-String reconstructString(List<String> dictionary, String string){
+List<String> reconstructString(List<String> dictionary, String string){
   String result = "";
   for(int i = 0; i < string.length + 1; i ++){
 //    print('String is : $string and result is $result and index is $i');
@@ -118,5 +119,5 @@ String reconstructString(List<String> dictionary, String string){
 //      String temp = reconstructString(dictionary, string.substring(i + 1));
 //      if(temp != null)result = result + temp;
   }
-  return string.isEmpty ? result : null;
+  return string.isEmpty ? result.substring(1).split(" ") : null;
 }
