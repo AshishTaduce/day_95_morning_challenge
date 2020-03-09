@@ -41,5 +41,70 @@
 // string "bedbathandbeyond", return either ['bed', 'bath', 'and', 'beyond] or
 // ['bedbath', 'and', 'beyond'].
 
+import 'dart:math';
+
 void main() {
+  print(longestStreak(
+      [
+
+        {
+          "date": "2019-09-19"
+        },
+        {
+          "date": "2019-09-18"
+        },
+        {
+          "date": "2019-09-20"
+        },
+        {
+          "date": "2019-09-26"
+        },
+        {
+          "date": "2019-09-27"
+        },
+        {
+          "date": "2019-09-30"
+        }
+      ]
+  ));
+
+  print(longestStreak(
+      [
+        {
+          "date": "2019-09-30"
+        },
+        {
+        "date": "2019-10-01"
+        },
+        {
+          "date": "2019-10-02"
+        },
+      ]
+  ));
+}
+
+int longestStreak(List<Map<String, String>> dates){
+  List<DateTime> listOfDates= [];
+  for(Map date in dates){
+    listOfDates.insert(0, DateTime.parse(date['date']));
+  }
+  listOfDates.sort((a, b) => a.compareTo(b));
+  int count = 0;
+  List<int> listOfStreaks= [];
+  for(int i = 0; i < listOfDates.length - 1; i++){
+    if(listOfDates[i].add(Duration(days: 1)) != listOfDates[i + 1]){
+      if(count != 0) print('Streak lost. 😔');
+      listOfStreaks.add(count);
+      count = 0;
+    }
+    else{
+      count++;
+      print('Streak! 🔥 $count');
+      if(i == listOfDates.length - 2)
+        listOfStreaks.add(count);
+    }
+  }
+
+  print(listOfStreaks);
+  return listOfStreaks.isNotEmpty ? (listOfStreaks.reduce(max)) : 0;
 }
