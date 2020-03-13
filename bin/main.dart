@@ -79,6 +79,42 @@ void main() {
   print(reconstructString(['bedbat', 'bedbath', 'and', 'beyond',], "bedbathandbeyond"));
   print(reconstructString(['bedbat', 'bed', 'bath', 'bedbath', 'and', 'beyond',], "bedbathandbeyondbedbathandbeyond"));
   print(reconstructString(["that", 'is', 'quick', 'brown', 'the', 'fox',], "abcn"));
+
+  print("test 1");
+  print(reconstructString(['quick', 'brown', 'the', 'fox'], "thequickbrownfox"));
+  print("------------");
+  print("test 2");
+  print(reconstructString(
+      ['bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print("------------");
+  print("test 3");
+  print(reconstructString(['bed', 'bath', 'bedbath', 'and', 'beyond'],
+      "bedbathandbeyondeverything"));
+  print("------------");
+  print("test 4");
+  print(reconstructString(['bedbath', 'bed', 'bath', 'bedbath', 'and', 'beyond'],
+      "bedbathandbeyondeverything"));
+  print("------------");
+  print("test 5");
+  print(reconstructString(
+      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'],
+      'thatfoxisthequickbrownfox'));
+  print("------------");
+  print("test 6");
+  print(reconstructString(
+      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'], 'fox'));
+  print("test 7");
+  print(reconstructString(
+      ['quick', 'brown', 'the', 'fox', 'quickbrown', 'that', 'is'], ''));
+  print("------------");
+  print("test 8");
+  print(reconstructString(
+      ['bedb', 'bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print("------------");
+  print("random tests or test 9");
+  print(reconstructString(
+      ['bedb','bed', 'bath', 'bedbath', 'and', 'beyond'], "bedbathandbeyond"));
+  print("------------");
 }
 
 int longestStreak(List<Map<String, String>> dates){
@@ -128,3 +164,4 @@ List<String> reconstructString(List<String> dictionary, String string){
   }
   return null;
 }
+
