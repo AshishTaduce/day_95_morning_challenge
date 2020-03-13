@@ -108,14 +108,17 @@ int longestStreak(List<Map<String, String>> dates){
 }
 
 List<String> reconstructString(List<String> dictionary, String string){
-  List<String> result = [];
   if(string.isEmpty) return [];
-  for(int i = 0; i < string.length + 1; i ++){
+  for(int i = 1; i < string.length + 1; i ++){
 //    print('String is : $string and result is $result and index is $i');
-
-    if(dictionary.contains(string.substring(0, i))){
-      while(reconstructString(dictionary, string.substring(0, i)) != null) i++;
-      return (reconstructString(dictionary, string.substring(i, string.length)));
+//print(i);
+  String word = string.substring(0, i);
+    if(dictionary.contains(word)){
+      List<String> result= reconstructString(dictionary, string.substring(i));
+      if(result != null){
+        result.insert(0, word);
+        return result;
+      }
     }
   }
   return null;
