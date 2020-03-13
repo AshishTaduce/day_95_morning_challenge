@@ -112,11 +112,11 @@ List<String> reconstructString(List<String> dictionary, String string){
   for(int i = 1; i < string.length + 1; i ++){
 //    print('String is : $string and result is $result and index is $i');
 //print(i);
-  String word = string.substring(0, i);
-    if(dictionary.contains(word)){
-      List<String> result= reconstructString(dictionary, string.substring(i));
-      if(result != null){
-        result.insert(0, word);
+    List<String> result;
+    if(dictionary.contains(string.substring(0, i))){
+      if(reconstructString(dictionary, string.substring(i)) != null){
+        result = reconstructString(dictionary, string.substring(i));
+        result.insert(0, string.substring(0, i));
         return result;
       }
     }
